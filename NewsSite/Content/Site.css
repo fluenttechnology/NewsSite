@@ -1,0 +1,221 @@
+﻿/*Body links css*/
+a {
+    color: #080808;
+    text-decoration: none;
+}
+
+    a:hover,
+    a:focus {
+        color: #23527c;
+        text-decoration: underline;
+    }
+
+body {
+    padding-top: 54px;
+    padding-bottom: 20px;
+}
+
+/* Wrapping element */
+/* Set some basic padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.companyName {
+    font-size: 9px;
+    font-weight: normal;
+    display: inline-block;
+    padding-left: 8px;
+}
+
+.navbar input[type=text] {
+    float: right;
+    padding: 6px;
+    margin-top: 8px;
+    margin-right: 16px;
+    border: none;
+    font-size: 17px;
+    min-width: 180px;
+}
+
+.navbar-header {
+    width: 100%;
+    margin-left: 0;
+    margin-right: 0;
+}
+
+.navbar-inverse {
+    background-color: #738290;
+    border-color: #080808;
+}
+
+.navbar-inverse .navbar-brand {
+    color: #FFFFFF;
+}
+
+/*pagination*/
+.center {
+    text-align: center;
+    width: 100%;
+}
+
+.pagination {
+    display: inline-block;
+}
+
+    .pagination a {
+        color: black;
+        float: left;
+        padding: 8px 16px;
+        text-decoration: none;
+        margin: 0 4px;
+    }
+
+        .pagination a.activePagination {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        .pagination a:hover:not(.active) {
+            background-color: #ddd;
+        }
+
+/*Article table css*/
+table.individualArticle {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+td.article {
+    border: 3px solid #fff !important;
+    width: 100%;
+}
+
+.articleCell {
+    font-size: 10px;
+    font-weight: normal;
+    min-height: 1px;
+    padding-right: 15px;
+    padding-left: 15px;
+    word-wrap: break-word;
+    display: inline-block;
+}
+
+.articleCellLeft {
+    width: 130px;
+}
+
+tr.article {
+    border-color: #fff;
+    width: 100%;
+}
+
+    tr.article:nth-child(even) {
+        background-color: #E5F2FF;
+    }
+
+    tr.article:nth-child(odd) {
+        background-color: #D7E4EF;
+    }
+
+    tr.article:hover {
+        background-color: #f5f5f5;
+    }
+
+tr.individualArticle {
+    width: 100%;
+}
+
+td.noResults {
+    text-align: center;
+    font-size: 17px;
+    font-weight: bold;
+}
+
+/*Topnav */
+.topnav {
+    background-color: #738290;
+    overflow: hidden;
+}
+
+    .topnav a {
+        float: left;
+        display: block;
+        color: #f2f2f2;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+        font-size: 17px;
+    }
+
+        .topnav a:hover {
+            background-color: #ddd;
+            color: black;
+        }
+
+        .topnav a.active {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+    .topnav .icon {
+        display: none;
+    }
+
+/*Resizing of search*/
+@media screen and (max-width: 600px) {
+    body {
+        padding-top: 108px;
+    }
+
+    .navbar input[type=text] {
+        float: none;
+        display: block;
+        text-align: left;
+        width: 100%;
+        margin: 0;
+        padding: 14px;
+        min-width: 180px;
+    }
+
+    .navbar input[type=text] {
+        border: 1px solid #ccc;
+    }
+
+    .navbar-header {
+        width: 100%;
+        margin-left: 0;
+        margin-right: 0;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .topnav a:not(:first-child) {
+        display: none;
+    }
+
+    .topnav a.icon {
+        float: right;
+        display: block;
+    }
+}
+
+/*responsive css*/
+@media screen and (max-width: 600px) {
+    .topnav.responsive {
+        position: relative;
+    }
+
+        .topnav.responsive .icon {
+            position: absolute;
+            right: 0;
+            top: 0;
+        }
+
+        .topnav.responsive a {
+            float: none;
+            display: block;
+            text-align: left;
+        }
+}
