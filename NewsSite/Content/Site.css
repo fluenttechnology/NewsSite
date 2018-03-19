@@ -18,13 +18,17 @@ a {
     padding: 14px 16px;
     text-decoration: none;
     font-size: 17px;
+    width: 100%;
 }
 .articleImg{
     text-align: center;
     max-height: 800px;
     max-width: 800px;
 }
-.centerImg{
+articleBody {
+    width: 100%;
+}
+.centerImg {
     text-align: center;
 }
 
@@ -236,4 +240,11 @@ td.noResults {
             display: block;
             text-align: left;
         }
+}
+
+@media screen and (max-width: 800px) {
+    .articleImg {
+        text-align: center;
+        width: 100%;
+    }
 }
