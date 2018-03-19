@@ -18,7 +18,13 @@
                     <td class="article">
                         <table class="individualArticle">
                             <tr class="individualArticle">
-                                <th colspan="3"><a href="@article.url">@article.title</a><div class="companyName">(@article.name)</div></th>
+                                <th colspan="3">@Html.ActionLink(@article.title, 
+                                                               "Index", 
+                                                               "Article", 
+                                                               new { urlToImg = article.urlToImg, title = article.title, description = article.description }, 
+                                                               null) 
+                                                <div class="companyName">(@article.name)</div>@*<a href="@article.url">@article.title</a><div class="companyName">(@article.name)</div>*@
+                                </th>
                             </tr>
                             <tr class="individualArticle">
                                 <td class="articleCell articleCellLeft">@article.publishedDate</td>

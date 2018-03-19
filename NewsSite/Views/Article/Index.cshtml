@@ -1,0 +1,68 @@
+﻿@model NewsSite.Models.Article
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="~/Content/bootstrap.css" />
+    <link rel="stylesheet" href="~/Content/site.css" />
+</head>
+
+<div id="article">
+    <table class="table table-bordered">
+        @if (Model != null)
+        {
+        <tr>
+            <td class="centerImg">
+                <img class="articleImg" src="@Model.urlToImg" alt="Story Img" />
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <h class="articleHeader">@Model.title</h>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div>
+                    <p>@Model.description</p>
+                    <p>
+                        Vel vel laoreet pellentesque a in. Amet nunc et sollicitudin amet tortor tellus risus vehicula in dapibus donec a ornare litora aliquet metus ad. Neque lacus neque.
+                        Rerum scelerisque diam eu et fames. Nulla nam iaculis. Justo nulla ullamcorper. Pellentesque egestas vel. Augue etiam arcu suspendisse lacus dolor vitae nibh sagittis.
+                    </p>
+                    <p>
+                        Vivamus lorem dictum malesuada sed ac. Libero molestie tempor sagittis et mattis. Neque sed eu. Duis orci vitae ac pharetra massa fermentum et adipiscing. Suspendisse commodo
+                        mauris.Ante a est bibendum nec per mauris quam et aliquet velit nonummy libero augue aptent.Donec ut curabitur phasellus enim rutrum condimentum morbi vitae.
+                        Mollis ante sed.Donec rutrum quam erat libero pharetra. Semper venenatis pretium.Eleifend a justo.A nec in nunc ut arcu arcu imperdiet ut. A enim vitae alias ante faucibus maecenas
+                        ut imperdiet.Egestas ut ut nam condimentum ut sem ac possimus arcu auctor congue. Tempus diam cursus.Vitae faucibus hymenaeos purus lorem maecenas. Vitae a et tortor corporis mauris
+                        aliquam dapibus integer.
+                    </p>
+                    <p>
+                        Pharetra donec ac id amet maecenas. Suscipit est tempor non mi fusce. Necessitatibus velit nisl.Tristique amet soluta tempor eget sit dolor vestibulum proin.
+                        Integer dictum ac voluptas cras est pede vestibulum ante.Magna odio in lacus mus et.Cras suspendisse turpis.Nec ab aliquam sit sed quibusdam.
+                        Arcu volutpat orci.Aliquam mauris lectus. Aliquam ac impedit.Augue ac magna. Volutpat erat integer consequat et metus.
+                    </p>
+                    <p>
+                        Id nunc integer. Elit risus massa wisi mauris morbi. Gravida auctor mauris ac pellentesque morbi. Non pellentesque auctor nullam
+                        pellentesque cras. Volutpat nostra eget. Aut rutrum architecto ultricies odio dapibus. Mauris lobortis amet tellus suspendisse erat feugiat at est libero nibh vel. Duis turpis nec
+                        tempus tortor venenatis mattis etiam rutrum.Mauris sed integer. Proin vel mauris ut sit hendrerit.
+                    </p>
+                    <p>
+                        Sociis ante magna malesuada egestas eget ut sodales class quam dui vestibulum. Lectus donec commodo.
+                        Ipsum leo pulvinar.Mauris adipiscing dicta.Metus est eu.Quis tempus rutrum pellentesque morbi et massa consequat scelerisque.Gravida massa tempor.Eget et sit ornare ut
+                        consectetuer lobortis eget tincidunt.Rhoncus quis aut orci taciti molestie ea in at egestas lorem a nunc nulla ornare.Neque semper enim.Lacus tincidunt felis.Ipsum maecenas
+                        egestas ultrices elit per vitae rutrum iaculis nec volutpat accumsan scelerisque in wisi.Dolor non volutpat.Lacus accumsan nec porttitor nunc lobortis.
+                    </p>
+                    <p>
+                        Fringilla arcu sapien.Dolor
+                        porttitor bibendum.Sagittis sed mi.Pellentesque mauris ante massa nec ut justo adipiscing ut.Libero ante dolor aliquam quis ornare. Sint nibh taciti vehicula nulla congue. Faucibus et
+                        nec.Enim sem tincidunt.Cursus enim nunc id aliquam augue eget dictumst iaculis fusce con etiam donec scelerisque quam.Quis nec a.Nonummy varius ridiculus.Orci eu magna.Arcu arcu
+                        posuere sed congue ultrices porttitor aenean faucibus mauris praesent integer risus aliquet quam.
+                    </p>
+                </div>
+            </td>
+        </tr>
+        }
+    </table>
+</div>
