@@ -5,7 +5,7 @@ The project started out as a technical challenge sent to me by a prospective emp
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
 
 ## Prerequisites
-1. [Visual Studio]: https://www.visualstudio.com/vs/community/
+1. Visual Studio: https://www.visualstudio.com/vs/community/
 
 ## Installing and Running
 # 1. Visual Studio
@@ -33,9 +33,9 @@ The main website page should open!
 The system is currently deployed to an azure App Service at http://newssite20180319085251.azurewebsites.net/.  To publish a new build you merely right click on your ASP.Net project and click publish.  This brings you to the publish page where you hit the publish button and it will upload the new build.
 
 ## Authors
-Iain Carlisle - Initial work
+* Iain Carlisle - Initial work
 
 ## Acknowledgments
-Hat tip to W3Schools and all the kind people of StackOverflow who helped me with this solution
-The fine people at https://newsapi.org/ for providing an excellent API
-The prospective employers who gave me this oppertunity to learn and improve myself over the course of the project
+* Hat tip to W3Schools and all the kind people of StackOverflow who helped me with this solution
+* The fine people at https://newsapi.org/ for providing an excellent API
+* The prospective employers who gave me this oppertunity to learn and improve myself over the course of the project
