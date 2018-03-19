@@ -2,8 +2,10 @@
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Net;
+using System.Text;
 using System.Web;
 using System.Web.Mvc;
 
@@ -116,12 +118,13 @@ namespace NewsSite.Controllers
         private List<Article> GetAPIResponse(string url)
         {
             //Gets response in the form of json
-            var json = new WebClient().DownloadString(url);
+            var json = new WebClient().DownloadData(url);
+            var jsonString = Encoding.UTF8.GetString(json);            
 
             Articles = new List<Article>();
 
             //Decodes response from API into managable object
-            JObject jObject = JObject.Parse(json);
+            JObject jObject = JObject.Parse(jsonString);
             JToken jArticles = jObject["articles"];
             JToken jSource;
 
