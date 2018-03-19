@@ -14,12 +14,12 @@
                                                     "Article", 
                                                     new { urlToImg = Model.urlToImg, title = Model.title, description = Model.description }, 
                                                     null) 
-                                    <div class="companyName">(Model.name)</div>
+                                    <div class="companyName">(@Model.name)</div>
                     </th>
                 </tr>
                 <tr class="individualArticle">
-                    <td class="articleCell articleCellLeft">Model.publishedDate</td>
-                    <td class="articleCell">Model.author</td>
+                    <td class="articleCell articleCellLeft">@Model.publishedDate</td>
+                    <td class="articleCell">@Model.author</td>
                 </tr>
             </table>
         </td>
