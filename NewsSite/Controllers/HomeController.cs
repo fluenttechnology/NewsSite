@@ -11,31 +11,32 @@ namespace NewsSite.Controllers
 {
     public class HomeController : Controller
     {
-        public List<Article> Articles;
+        public Articles Articles;
         public string search;
         public string paginationNumber;
 
-        public ActionResult Index(string search, string paginationNumber)
+        public ActionResult Index(string searchBar, string pageNumber)
         {
-            if(paginationNumber == null)
+            if(pageNumber == null)
             {
-                paginationNumber = "1";
+                pageNumber = "1";
             }
-            if (search == null)
+            if (searchBar == null)
             {
-                search = "";
+                searchBar = "";
             }
 
             var url = "https://newsapi.org/v2/everything?" +
                 "domains=bbc.co.uk&" +
                 "pageSize=15&" +
-                "page=" + paginationNumber + "&" +
-                "q=" + search + "&" +
+                "page=" + pageNumber + "&" +
+                "q=" + searchBar + "&" +
                 "apiKey=dbca6d85dbbd4e11b532b212af6282b5";
 
             var json = new WebClient().DownloadString(url);
 
-            Articles = new List<Article>();
+            Articles = new Articles();
+            Articles.articles = new List<Article>();
 
             JObject jObject = JObject.Parse(json);
             JToken jArticles = jObject["articles"];
@@ -59,10 +60,62 @@ namespace NewsSite.Controllers
                 newArticle.urlToImg = (string)article["urlToImage"];
                 newArticle.publishedDate = (string)article["publishedAt"];
 
-                Articles.Add(newArticle);
+                Articles.articles.Add(newArticle);
             }
 
             return View(Articles);
+        }
+        
+        public PartialViewResult GetArticles(string searchBar, string pageNumber)
+        {
+            if (pageNumber == null)
+            {
+                pageNumber = "1";
+            }
+            if (searchBar == null)
+            {
+                searchBar = "";
+            }
+           
+            var url = "https://newsapi.org/v2/everything?" +
+                "domains=bbc.co.uk&" +
+                "pageSize=15&" +
+                "page=" + pageNumber + "&" +
+                "q=" + searchBar + "&" +
+                "apiKey=dbca6d85dbbd4e11b532b212af6282b5";
+
+            var json = new WebClient().DownloadString(url);
+
+            Articles = new Articles();
+            Articles.articles = new List<Article>();
+
+            JObject jObject = JObject.Parse(json);
+            JToken jArticles = jObject["articles"];
+            JToken jSource;
+
+            int i = 1;
+
+            foreach (var article in jArticles)
+            {
+                Article newArticle = new Article();
+
+                jSource = article["source"];
+
+                newArticle.id = i.ToString();
+                newArticle.source = (string)(jSource["id"]);
+                newArticle.name = (string)(jSource["name"]);
+                newArticle.author = (string)article["author"];
+                newArticle.title = (string)article["title"];
+                newArticle.description = (string)article["description"];
+                newArticle.url = (string)article["url"];
+                newArticle.urlToImg = (string)article["urlToImage"];
+                newArticle.publishedDate = (string)article["publishedAt"];
+
+                Articles.articles.Add(newArticle);
+            }
+
+
+            return PartialView("_ArticlesView", Articles);
         }
 
         public ActionResult Details(int? id)
@@ -71,7 +124,7 @@ namespace NewsSite.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Article article = Articles.Find(x => x.id == id.ToString());
+            Article article = Articles.articles.Find(x => x.id == id.ToString());
             if (article == null)
             {
                 return HttpNotFound();

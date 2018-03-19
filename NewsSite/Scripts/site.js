@@ -10,6 +10,7 @@ function responsiveNavbar() {
 
 function clickPagination(clicked_id) {
     var newPage = document.getElementById("paginationBar");
+    var searchBar = document.getElementById("searchBar");
     var x = document.getElementsByClassName("activePagination");
     if (x.length > 0) {
         x[0].classList.remove("activePagination");
@@ -18,10 +19,13 @@ function clickPagination(clicked_id) {
     newPage.value = y.textContent;
     y.className += "activePagination";
 
-    var xhr = new XMLHttpRequest();
+    var search = searchBar.textContent;
+    var paginationNumber = newPage.value;
 
-    xhr.open('GET', "http://localhost:58322/", true);
-    xhr.send();
+    document.getElementById('page').value = paginationNumber;
+    document.getElementById('search').value = search;
+
+    window.location.href = '/Home/Index/' + search + '/' + paginationNumber + "/";
 }
 
 function clickMinusPagination() {

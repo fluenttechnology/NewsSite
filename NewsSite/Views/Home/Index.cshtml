@@ -1,4 +1,4 @@
-﻿@model IEnumerable<NewsSite.Models.Article>
+﻿@model NewsSite.Models.Articles
 @{
     ViewData["Title"] = "Home page";
 }
@@ -10,31 +10,11 @@
 </head>
 
 <div id="articles" class="table">
-    <table class="table table-bordered">
-        @if ( Model.Count() > 0)
-        {
-            foreach (var article in Model)
-            {
-                <tr class="article" colspan="3">
-                    <td class="article">
-                        <table class="individualArticle">
-                            <tr class="individualArticle">
-                                <th colspan="3"><a href="@article.url">@article.title</a><div class="companyName">(@article.name)</div></th>
-                            </tr>
-                            <tr class="individualArticle">
-                                <td class="articleCell articleCellLeft">@article.publishedDate</td>
-                                <td class="articleCell">@article.author</td>
-                            </tr>
-                        </table>
-                    </td>
-                </tr>
-            }
-        }
-        else
-        {
-            <tr><td class="noResults">No results matched the search</td></tr>
-        }
-    </table>
+
+    <div id="partial">
+        @Html.Partial("_ArticlesView", Model)
+    </div>
+
     <div class="center">
         <div class="pagination">
             <a href="#" onClick="clickMinusPagination()">&laquo;</a>
@@ -47,4 +27,9 @@
             <a href="#" onClick="clickPlusPagination()">&raquo;</a>
         </div>
     </div>
+
+    @Html.Hidden("page", Model.page)
+    @Html.Hidden("search", Model.search)
 </div>
+
+
