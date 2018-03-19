@@ -11,51 +11,59 @@ namespace NewsSite.Controllers
 {
     public class HomeController : Controller
     {
-        public Articles Articles;
+        public List<Article> Articles;
         public string search;
-        public string paginationNumber;
 
-        public ActionResult Index(string searchBar, string pageNumber)
+        [HttpGet]
+        public ActionResult Index(int? page, string searchBar)
         {
-            var query = "";
-            GetAPIResponse(query, searchBar, pageNumber);
+            var dummyItems = GetAPIResponse(searchBar);
+            var pager = new Pager(dummyItems.Count(), page);
 
-            return View(Articles);
+            var viewModel = new IndexViewModel
+            {
+                Items = dummyItems.Skip((pager.CurrentPage - 1) * pager.PageSize).Take(pager.PageSize),
+                Pager = pager,
+                SearchBar = searchBar != null ? searchBar : ""
+            };
+
+            return View(viewModel);
         }
-        
-        public PartialViewResult GetArticles(string searchBar, string pageNumber)
-        {
-            var query = "";
-            GetAPIResponse(query, searchBar, pageNumber);
 
-            return PartialView("_ArticlesView", Articles);
+        public ActionResult Index(string searchBar)
+        {
+            var dummyItems = GetAPIResponse(searchBar);
+            var pager = new Pager(dummyItems.Count(), 1);
+
+            var viewModel = new IndexViewModel
+            {
+                Items = dummyItems.Skip((pager.CurrentPage - 1) * pager.PageSize).Take(pager.PageSize),
+                Pager = pager,
+                SearchBar = searchBar
+            };
+
+            return View(viewModel);
         }
 
         #region Helper functions
 
-        private Articles GetAPIResponse(string query, string searchBar, string pageNumber)
+        private List<Article> GetAPIResponse(string query)
         {
-            if (pageNumber == null)
+            if (query == null)
             {
-                pageNumber = "1";
-            }
-            if (searchBar == null)
-            {
-                searchBar = "";
+                query = "";
             }
 
             var url = "https://newsapi.org/v2/everything?" +
                 "domains=bbc.co.uk&" +
-                "pageSize=15&" +
-                "page=" + pageNumber + "&" +
-                "q=" + searchBar + "&" +
-                query +
+                "pageSize=100&" +
+                "page=" + "1" + "&" +
+                "q=" + query + "&" +
                 "apiKey=dbca6d85dbbd4e11b532b212af6282b5";
 
             var json = new WebClient().DownloadString(url);
 
-            Articles = new Articles();
-            Articles.articles = new List<Article>();
+            Articles = new List<Article>();
 
             JObject jObject = JObject.Parse(json);
             JToken jArticles = jObject["articles"];
@@ -79,7 +87,7 @@ namespace NewsSite.Controllers
                 newArticle.urlToImg = (string)article["urlToImage"];
                 newArticle.publishedDate = (string)article["publishedAt"];
 
-                Articles.articles.Add(newArticle);
+                Articles.Add(newArticle);
             }
 
             return Articles;

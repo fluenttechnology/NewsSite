@@ -18,12 +18,6 @@ namespace NewsSite
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
             );
-
-            routes.MapRoute(
-                name: "Articles",
-                url: "{controller}/{action}/{search}/{paginationNumber}",
-                defaults: new { controller = "Home", action = "GetArticles", search = UrlParameter.Optional, paginationNumber = UrlParameter.Optional }
-            );
         }
     }
 }

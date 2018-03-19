@@ -1,4 +1,4 @@
-﻿@model NewsSite.Models.Articles
+﻿@model NewsSite.Models.IndexViewModel
 @{
     ViewData["Title"] = "Home page";
 }
@@ -11,22 +11,45 @@
 
 <div id="articles" class="table">
 
-    <div id="partial">
-        @Html.Partial("_ArticlesView", Model)
-    </div>
+    <table class="table table-bordered">
+        @foreach (var article in Model.Items)
+        {
+            @Html.Partial("_ArticlesView", article)
+        }
+    </table>
 
-    <div class="center">
-        <div class="pagination">
-            <a href="#" onClick="clickMinusPagination()">&laquo;</a>
-            <a href="#" class="activePagination" id="pagination1" onClick="clickPagination(this.id)">1</a>
-            <a href="#" id="pagination2" onClick="clickPagination(this.id)">2</a>
-            <a href="#" id="pagination3" onClick="clickPagination(this.id)">3</a>
-            <a href="#" id="pagination4" onClick="clickPagination(this.id)">4</a>
-            <a href="#" id="pagination5" onClick="clickPagination(this.id)">5</a>
-            <a href="#" id="pagination6" onClick="clickPagination(this.id)">6</a>
-            <a href="#" onClick="clickPlusPagination()">&raquo;</a>
-        </div>
-    </div>
+    <!-- pager -->
+    @if (Model.Pager.EndPage > 1)
+    {
+    <ul class="pagination">
+        @if (Model.Pager.CurrentPage > 1)
+        {
+        <li>
+            <a href="~/Home/Index?searchBar=@Model.SearchBar">First</a>
+        </li>
+        <li>
+            <a href="~/Home/Index?page=@(Model.Pager.CurrentPage - 1)&searchBar=@Model.SearchBar">Previous</a>
+        </li>
+        }
+
+        @for (var page = Model.Pager.StartPage; page <= Model.Pager.EndPage; page++)
+        {
+        <li class="@(page == Model.Pager.CurrentPage ? "active" : "")">
+            <a href="~/Home/Index?page=@page&searchBar=@Model.SearchBar">@page</a>
+        </li>
+        }
+
+        @if (Model.Pager.CurrentPage < Model.Pager.TotalPages)
+        {
+        <li>
+            <a href="~/Home/Index?page=@(Model.Pager.CurrentPage + 1)&searchBar=@Model.SearchBar">Next</a>
+        </li>
+        <li>
+            <a href="~/Home/Index?page=@(Model.Pager.TotalPages)&searchBar=@Model.SearchBar">Last</a>
+        </li>
+        }
+    </ul>
+    }
 </div>
 
 
