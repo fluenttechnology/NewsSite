@@ -16,9 +16,9 @@
     <nav class="navbar navbar-inverse navbar-fixed-top" style="background-color: #738290; border-color: #080808;">
         <div class="container">
             <div class="topnav" id="myTopnav">
-                <a class="active" href="/Index">Home</a>
-                <a href="#news">New</a>
-                <a href="#contact">Local</a>
+                <a class="active" href="~/Home/Index?searchBar=">Home</a>
+                <a href="~/Home/Popular" >Hot</a>
+                <a href="~/Home/UnitedStates" >United States</a>
                 <a href="javascript:void(0);" class="icon" onclick="responsiveNavbar()">&#9776;</a>
                 <div class="search-container">
                     <form action="" method="post">
@@ -33,7 +33,10 @@
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; 2017 - NewsDemo</p>
+            <div>
+                <div class="floatright">Powered by NewsAPI.org - </div>
+                <div class="floatleft">&copy; 2017 - NewsDemo</div>
+            </div>
         </footer>
     </div>
 

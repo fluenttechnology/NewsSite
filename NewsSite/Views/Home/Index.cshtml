@@ -12,9 +12,16 @@
 <div id="articles" class="table">
 
     <table class="table table-bordered">
-        @foreach (var article in Model.Items)
+        @if(Model != null && Model.Items.Count() > 0)
         {
-            @Html.Partial("_ArticlesView", article)
+            foreach (var article in Model.Items)
+            {
+                @Html.Partial("_ArticlesView", article)
+            }
+        }
+        else
+        {
+            <tr><td class="noResults">No results matched the search</td></tr>
         }
     </table>
 

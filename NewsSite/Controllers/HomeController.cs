@@ -17,7 +17,14 @@ namespace NewsSite.Controllers
         [HttpGet]
         public ActionResult Index(int? page, string searchBar)
         {
-            var dummyItems = GetAPIResponse(searchBar);
+            var url = "https://newsapi.org/v2/everything?" +
+                "domains=bbc.co.uk&" +
+                "pageSize=100&" +
+                "page=" + "1" + "&" +
+                "q=" + searchBar + "&" +
+                "apiKey=dbca6d85dbbd4e11b532b212af6282b5";
+
+            var dummyItems = GetAPIResponse(url);
             var pager = new Pager(dummyItems.Count(), page);
 
             var viewModel = new IndexViewModel
@@ -32,7 +39,14 @@ namespace NewsSite.Controllers
 
         public ActionResult Index(string searchBar)
         {
-            var dummyItems = GetAPIResponse(searchBar);
+            var url = "https://newsapi.org/v2/everything?" +
+                "domains=bbc.co.uk&" +
+                "pageSize=100&" +
+                "page=" + "1" + "&" +
+                "q=" + searchBar + "&" +
+                "apiKey=dbca6d85dbbd4e11b532b212af6282b5";
+
+            var dummyItems = GetAPIResponse(url);
             var pager = new Pager(dummyItems.Count(), 1);
 
             var viewModel = new IndexViewModel
@@ -45,22 +59,53 @@ namespace NewsSite.Controllers
             return View(viewModel);
         }
 
-        #region Helper functions
-
-        private List<Article> GetAPIResponse(string query)
+        public ActionResult Popular(string searchBar)
         {
-            if (query == null)
-            {
-                query = "";
-            }
-
             var url = "https://newsapi.org/v2/everything?" +
                 "domains=bbc.co.uk&" +
                 "pageSize=100&" +
                 "page=" + "1" + "&" +
-                "q=" + query + "&" +
+                "q=" + searchBar + "&" +
+                "sortBy=popularity&" +
                 "apiKey=dbca6d85dbbd4e11b532b212af6282b5";
 
+            var dummyItems = GetAPIResponse(url);
+            var pager = new Pager(dummyItems.Count(), 1);
+
+            var viewModel = new IndexViewModel
+            {
+                Items = dummyItems.Skip((pager.CurrentPage - 1) * pager.PageSize).Take(pager.PageSize),
+                Pager = pager
+            };
+
+            return View("Index", viewModel);
+        }
+
+        public ActionResult UnitedStates(string searchBar)
+        {
+            var url = "https://newsapi.org/v2/top-headlines?" +
+                "country=us&" +
+                "pageSize=100&" +
+                "page=" + "1" + "&" +
+                "q=" + searchBar + "&" +
+                "apiKey=dbca6d85dbbd4e11b532b212af6282b5";
+
+            var dummyItems = GetAPIResponse(url);
+            var pager = new Pager(dummyItems.Count(), 1);
+
+            var viewModel = new IndexViewModel
+            {
+                Items = dummyItems.Skip((pager.CurrentPage - 1) * pager.PageSize).Take(pager.PageSize),
+                Pager = pager
+            };
+
+            return View("Index", viewModel);
+        }
+
+        #region Helper functions
+
+        private List<Article> GetAPIResponse(string url)
+        {
             var json = new WebClient().DownloadString(url);
 
             Articles = new List<Article>();

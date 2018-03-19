@@ -81,6 +81,12 @@ body {
     text-align: center;
     width: 100%;
 }
+.floatright {
+    float: right;
+}
+.floatleft {
+    float: left;
+}
 
 .pagination {
     display: inline-block;
