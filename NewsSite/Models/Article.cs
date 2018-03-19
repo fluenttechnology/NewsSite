@@ -5,6 +5,7 @@ using System.Web;
 
 namespace NewsSite.Models
 {
+    //Base model to contain an articles information
     public class Article
     {
         public string id;

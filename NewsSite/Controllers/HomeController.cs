@@ -14,9 +14,11 @@ namespace NewsSite.Controllers
         public List<Article> Articles;
         public string search;
 
+        //Paging through results by taking in a page id
         [HttpGet]
         public ActionResult Index(int? page, string searchBar)
         {
+            //URL to call external news API with
             var url = "https://newsapi.org/v2/everything?" +
                 "domains=bbc.co.uk&" +
                 "pageSize=100&" +
@@ -24,9 +26,11 @@ namespace NewsSite.Controllers
                 "q=" + searchBar + "&" +
                 "apiKey=dbca6d85dbbd4e11b532b212af6282b5";
 
+            //Calling helper function to get Articles
             var dummyItems = GetAPIResponse(url);
             var pager = new Pager(dummyItems.Count(), page);
 
+            //Load our viewModel full of data
             var viewModel = new IndexViewModel
             {
                 Items = dummyItems.Skip((pager.CurrentPage - 1) * pager.PageSize).Take(pager.PageSize),
@@ -34,9 +38,12 @@ namespace NewsSite.Controllers
                 SearchBar = searchBar != null ? searchBar : ""
             };
 
+            //draw page with viewModel data
             return View(viewModel);
         }
 
+
+        //Base index function, uses search bar
         public ActionResult Index(string searchBar)
         {
             var url = "https://newsapi.org/v2/everything?" +
@@ -59,6 +66,7 @@ namespace NewsSite.Controllers
             return View(viewModel);
         }
 
+        //Prebuilt function to browse popular news stories
         public ActionResult Popular(string searchBar)
         {
             var url = "https://newsapi.org/v2/everything?" +
@@ -81,6 +89,7 @@ namespace NewsSite.Controllers
             return View("Index", viewModel);
         }
 
+        //Prebuilt function to browse US stories
         public ActionResult UnitedStates(string searchBar)
         {
             var url = "https://newsapi.org/v2/top-headlines?" +
@@ -106,10 +115,12 @@ namespace NewsSite.Controllers
 
         private List<Article> GetAPIResponse(string url)
         {
+            //Gets response in the form of json
             var json = new WebClient().DownloadString(url);
 
             Articles = new List<Article>();
 
+            //Decodes response from API into managable object
             JObject jObject = JObject.Parse(json);
             JToken jArticles = jObject["articles"];
             JToken jSource;
@@ -122,6 +133,7 @@ namespace NewsSite.Controllers
 
                 jSource = article["source"];
 
+                //Building our Article Model
                 newArticle.id = i.ToString();
                 newArticle.source = (string)(jSource["id"]);
                 newArticle.name = (string)(jSource["name"]);

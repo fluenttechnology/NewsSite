@@ -19,23 +19,36 @@ namespace NewsSite.Tests.Controllers
             HomeController controller = new HomeController();
 
             // Act
-            ViewResult result = controller.Index() as ViewResult;
+            ViewResult result = controller.Index(1, "") as ViewResult;
 
             // Assert
             Assert.IsNotNull(result);
         }
 
         [TestMethod]
-        public void About()
+        public void IndexNoId()
         {
             // Arrange
             HomeController controller = new HomeController();
 
             // Act
-            ViewResult result = controller.About() as ViewResult;
+            ViewResult result = controller.Index("") as ViewResult;
 
             // Assert
-            Assert.AreEqual("Your application description page.", result.ViewBag.Message);
+            Assert.IsNotNull(result);
+        }
+
+        [TestMethod]
+        public void Popular()
+        {
+            // Arrange
+            HomeController controller = new HomeController();
+
+            // Act
+            ViewResult result = controller.Popular("") as ViewResult;
+
+            // Assert
+            Assert.IsNotNull(result);
         }
 
         [TestMethod]
@@ -45,7 +58,7 @@ namespace NewsSite.Tests.Controllers
             HomeController controller = new HomeController();
 
             // Act
-            ViewResult result = controller.Contact() as ViewResult;
+            ViewResult result = controller.UnitedStates("") as ViewResult;
 
             // Assert
             Assert.IsNotNull(result);

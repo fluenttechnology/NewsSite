@@ -10,7 +10,8 @@ namespace NewsSite.Controllers
     public class ArticleController : Controller
     {
         public Article article;
-        // GET: Article
+        
+        //Load view with values to populate
         public ActionResult Index(string urlToImg, string title, string description)
         {
             article = new Article();

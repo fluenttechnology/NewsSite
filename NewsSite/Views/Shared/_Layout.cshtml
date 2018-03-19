@@ -13,6 +13,7 @@
           asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
 </head>
 <body>
+    @*Navigation bar that includes quicklinks and search bar*@
     <nav class="navbar navbar-inverse navbar-fixed-top" style="background-color: #738290; border-color: #080808;">
         <div class="container">
             <div class="topnav" id="myTopnav">
@@ -30,6 +31,7 @@
         </div>
     </nav>
     <div class="container body-content">
+        @*Body contains our index pages*@
         @RenderBody()
         <hr />
         <footer>

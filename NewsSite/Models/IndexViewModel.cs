@@ -5,6 +5,7 @@ using System.Web;
 
 namespace NewsSite.Models
 {
+    // Model for Home Index view, contains Articles, pager and search info
     public class IndexViewModel
     {
         public IEnumerable<Article> Items { get; set; }
@@ -12,6 +13,7 @@ namespace NewsSite.Models
         public string SearchBar { get; set; }
     }
 
+    //Pager to allow browsing through pages of results
     public class Pager
     {
         public Pager(int totalItems, int? page, int pageSize = 15)

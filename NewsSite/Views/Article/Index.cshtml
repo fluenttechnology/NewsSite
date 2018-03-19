@@ -8,12 +8,13 @@
     <link rel="stylesheet" href="~/Content/bootstrap.css" />
     <link rel="stylesheet" href="~/Content/site.css" />
 </head>
-
+@*individual article page, contains full news story*@
 <div id="article">
     <table class="table table-bordered">
         @if (Model != null)
         {
         <tr>
+            @*articles image*@
             <td class="centerImg">
                 <img class="articleImg" src="@Model.urlToImg" alt="Story Img" />
             </td>
@@ -25,6 +26,7 @@
         </tr>
         <tr>
             <td>
+                @*articles story with placeholder text*@
                 <div class="articleBody">
                     <p>@Model.description</p>
                     <p>
