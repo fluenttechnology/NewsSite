@@ -22,8 +22,8 @@ function clickPagination(clicked_id) {
     var search = searchBar.textContent;
     var paginationNumber = newPage.value;
 
-    document.getElementById('page').value = paginationNumber;
-    document.getElementById('search').value = search;
+    document.getElementById('paginationBar').value = paginationNumber;
+    document.getElementById('searchBar').value = search;
 
     window.location.href = '/Home/Index/' + search + '/' + paginationNumber + "/";
 }
