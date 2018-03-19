@@ -9,18 +9,18 @@ These instructions will get you a copy of the project up and running on your loc
 
 ## Installing and Running
 # 1. Visual Studio
-⋅⋅1. Go to https://www.visualstudio.com/vs/community/ and download the executable
-⋅⋅2. Run the executable when it has finished downloading onto your machine
-⋅⋅3. On the Workloads section of the installation select ".NET Desktop Development" and "ASP.NET and web Development"
-⋅⋅4. Follow the steps on the wizard and ensure you have a microsoft account set up (https://account.microsoft.com/account)
-⋅⋅5. Run the development environment when installed
+1. Go to https://www.visualstudio.com/vs/community/ and download the executable
+2. Run the executable when it has finished downloading onto your machine
+3. On the Workloads section of the installation select ".NET Desktop Development" and "ASP.NET and web Development"
+4. Follow the steps on the wizard and ensure you have a microsoft account set up (https://account.microsoft.com/account)
+5. Run the development environment when installed
 
 # 2. GitHub Repo
-⋅⋅1. Navigate to https://github.com/IainCarlisle118/NewsSite
-⋅⋅2. Click Clone or Download and then Download .zip file
-⋅⋅3. Extract the zip file to your chosen repo destination on your drive
-⋅⋅4. Navigate to and run the .sln file in the solution
-⋅⋅5. Run the solution by Navigating to Debug->Start Debugging
+1. Navigate to https://github.com/IainCarlisle118/NewsSite
+2. Click Clone or Download and then Download .zip file
+3. Extract the zip file to your chosen repo destination on your drive
+4. Navigate to and run the .sln file in the solution
+5. Run the solution by Navigating to Debug->Start Debugging
 
 The main website page should open!
 
