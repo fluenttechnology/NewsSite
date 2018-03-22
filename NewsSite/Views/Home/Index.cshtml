@@ -33,7 +33,7 @@
         @if (Model.Pager.CurrentPage > 1)
         {
         <li>
-            <a href="~/Home/Index?searchBar=@Model.SearchBar">First</a>
+            <a href="~/Home/Index?page=1?searchBar=@Model.SearchBar">First</a>
         </li>
         <li>
             <a href="~/Home/Index?page=@(Model.Pager.CurrentPage - 1)&searchBar=@Model.SearchBar">Previous</a>
