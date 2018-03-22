@@ -1,5 +1,6 @@
 ﻿<!DOCTYPE html>
 <html>
+@model NewsSite.Models.IndexViewModel
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -17,14 +18,14 @@
     <nav class="navbar navbar-inverse navbar-fixed-top" style="background-color: #738290; border-color: #080808;">
         <div class="container">
             <div class="topnav" id="myTopnav">
-                <a class="active" href="~/Home/Index?searchBar=">Home</a>
-                <a href="~/Home/Popular" >Hot</a>
-                <a href="~/Home/UnitedStates" >United States</a>
+                <a class="active" href="~/Home/Index?page=1&searchBar=">Home</a>
+                <a href="~/Home/Popular?page=1&searchBar=">Hot</a>
+                <a href="~/Home/UnitedStates?page=1&searchBar=">United States</a>
                 <a href="javascript:void(0);" class="icon" onclick="responsiveNavbar()">&#9776;</a>
                 <div class="search-container">
-                    <form action="" method="post">
+                    <form action="/Home/Index?page=1&searchBar=" method="post">
                         <input type="text" placeholder="Search.." name="searchBar" id="searchBar">
-                        <input type="hidden" placeholder="1" name="pageNumber" id="paginationBar" value="1">
+                        <input type="hidden" placeholder="1" name="page" id="page" value="1">
                     </form>
                 </div>
             </div>
