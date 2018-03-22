@@ -13,13 +13,21 @@
           asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
 </head>
 <body>
+    @functions{
+
+        public string LinkClass(string path)
+        {
+            return Request.Url.LocalPath.StartsWith(path) ? "active" : string.Empty;
+        }
+
+    }
     @*Navigation bar that includes quicklinks and search bar*@
     <nav class="navbar navbar-inverse navbar-fixed-top" style="background-color: #738290; border-color: #080808;">
         <div class="container">
             <div class="topnav" id="myTopnav">
-                <a class="active" href="~/Home/Index?searchBar=">Home</a>
-                <a href="~/Home/Popular" >Hot</a>
-                <a href="~/Home/UnitedStates" >United States</a>
+                <a href="~/Home/Index?searchBar=" class="@LinkClass("/Home/Index")">Home</a>
+                <a href="~/Home/Popular" class="@LinkClass("/Home/Popular")">Hot</a>
+                <a href="~/Home/UnitedStates" class="@LinkClass("/Home/UnitedStates")">United States</a>
                 <a href="javascript:void(0);" class="icon" onclick="responsiveNavbar()">&#9776;</a>
                 <div class="search-container">
                     <form action="" method="post">
