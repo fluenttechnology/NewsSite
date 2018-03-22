@@ -10,13 +10,21 @@
     <link rel="stylesheet" href="~/Content/site.css" />
 </head>
 <body>
+    @functions{
+
+        public string LinkClass(string path)
+        {
+            return Request.Url.LocalPath.StartsWith(path) ? "active" : string.Empty;
+        }
+
+    }
     @*Navigation bar that includes quicklinks and search bar*@
     <nav class="navbar navbar-inverse navbar-fixed-top" style="background-color: #738290; border-color: #080808;">
         <div class="container">
             <div class="topnav" id="myTopnav">
-                <a class="active" href="~/Home/Index?page=1&searchBar=">Home</a>
-                <a href="~/Home/Popular?page=1&searchBar=">Hot</a>
-                <a href="~/Home/UnitedStates?page=1&searchBar=">United States</a>
+                <a href="~/Home/Index?page=1&searchBar=" class="@LinkClass("/Home/Index")">Home</a>
+                <a href="~/Home/Popular?page=1&searchBar=" class="@LinkClass("/Home/Popular")">Hot</a>
+                <a href="~/Home/UnitedStates?page=1&searchBar=" class="@LinkClass("/Home/UnitedStates")">United States</a>
                 <a href="javascript:void(0);" class="icon" onclick="responsiveNavbar()">&#9776;</a>
                 <div class="search-container">
                     <form action="/Home/Index?page=1&searchBar=" method="post">
