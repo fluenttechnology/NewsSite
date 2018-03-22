@@ -70,7 +70,7 @@ namespace NewsSite.Controllers
         }
 
         //Prebuilt function to browse popular news stories
-        public ActionResult Popular(string searchBar)
+        public ActionResult Popular(int? page, string searchBar)
         {
             var url = "https://newsapi.org/v2/everything?" +
                 "domains=bbc.co.uk&" +
@@ -81,7 +81,7 @@ namespace NewsSite.Controllers
                 "apiKey=dbca6d85dbbd4e11b532b212af6282b5";
 
             var dummyItems = GetAPIResponse(url);
-            var pager = new Pager(dummyItems.Count(), 1);
+            var pager = new Pager(dummyItems.Count(), page);
 
             var viewModel = new IndexViewModel
             {
@@ -93,7 +93,7 @@ namespace NewsSite.Controllers
         }
 
         //Prebuilt function to browse US stories
-        public ActionResult UnitedStates(string searchBar)
+        public ActionResult UnitedStates(int? page, string searchBar)
         {
             var url = "https://newsapi.org/v2/top-headlines?" +
                 "country=us&" +
@@ -103,7 +103,7 @@ namespace NewsSite.Controllers
                 "apiKey=dbca6d85dbbd4e11b532b212af6282b5";
 
             var dummyItems = GetAPIResponse(url);
-            var pager = new Pager(dummyItems.Count(), 1);
+            var pager = new Pager(dummyItems.Count(), page);
 
             var viewModel = new IndexViewModel
             {

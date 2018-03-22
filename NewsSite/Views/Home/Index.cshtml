@@ -3,10 +3,10 @@
     ViewData["Title"] = "Home page";
 }
 @*table to contain our individual news article partials*@
-<div id="articles" class="table">
 
+<div id="articles" class="table">
     <table class="table table-bordered">
-        @if(Model != null && Model.Items.Count() > 0)
+        @if (Model != null && Model.Items.Count() > 0)
         {
             foreach (var article in Model.Items)
             {
@@ -22,34 +22,34 @@
     @*pager so that the user can browse results*@
     @if (Model.Pager.EndPage > 1)
     {
-    <ul class="pagination">
-        @if (Model.Pager.CurrentPage > 1)
-        {
-        <li>
-            <a href="~/Home/Index?page=1?searchBar=@Model.SearchBar">First</a>
-        </li>
-        <li>
-            <a href="~/Home/Index?page=@(Model.Pager.CurrentPage - 1)&searchBar=@Model.SearchBar">Previous</a>
-        </li>
-        }
+        <ul class="pagination">
+            @if (Model.Pager.CurrentPage > 1)
+            {
+                <li>
+                    <a href="@Request.Url.AbsolutePath?page=1?searchBar=@Model.SearchBar">First</a>
+                </li>
+                <li>
+                    <a href="@Request.Url.AbsolutePath?page=@(Model.Pager.CurrentPage - 1)&searchBar=@Model.SearchBar">Previous</a>
+                </li>
+            }
 
-        @for (var page = Model.Pager.StartPage; page <= Model.Pager.EndPage; page++)
-        {
-        <li class="@(page == Model.Pager.CurrentPage ? "active" : "")">
-            <a href="~/Home/Index?page=@page&searchBar=@Model.SearchBar">@page</a>
-        </li>
-        }
+            @for (var page = Model.Pager.StartPage; page <= Model.Pager.EndPage; page++)
+            {
+                <li class="@(page == Model.Pager.CurrentPage ? "active" : "")">
+                    <a href="@Request.Url.AbsolutePath?page=@page&searchbar=@Model.SearchBar">@page</a>
+                </li>
+            }
 
-        @if (Model.Pager.CurrentPage < Model.Pager.TotalPages)
-        {
-        <li>
-            <a href="~/Home/Index?page=@(Model.Pager.CurrentPage + 1)&searchBar=@Model.SearchBar">Next</a>
-        </li>
-        <li>
-            <a href="~/Home/Index?page=@(Model.Pager.TotalPages)&searchBar=@Model.SearchBar">Last</a>
-        </li>
-        }
-    </ul>
+            @if (Model.Pager.CurrentPage < Model.Pager.TotalPages)
+            {
+                <li>
+                    <a href="@Request.Url.AbsolutePath?page=@(Model.Pager.CurrentPage + 1)&searchBar=@Model.SearchBar">Next</a>
+                </li>
+                <li>
+                    <a href="@Request.Url.AbsolutePath?page=@(Model.Pager.TotalPages)&searchBar=@Model.SearchBar">Last</a>
+                </li>
+            }
+        </ul>
     }
 </div>
 
