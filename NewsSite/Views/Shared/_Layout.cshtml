@@ -1,5 +1,6 @@
 ﻿<!DOCTYPE html>
 <html>
+@model NewsSite.Models.IndexViewModel
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -7,10 +8,6 @@
 
     <link rel="stylesheet" href="~/Content/bootstrap.css" />
     <link rel="stylesheet" href="~/Content/site.css" />
-
-    <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/css/bootstrap.min.css"
-          asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
-          asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
 </head>
 <body>
     @functions{
@@ -25,14 +22,14 @@
     <nav class="navbar navbar-inverse navbar-fixed-top" style="background-color: #738290; border-color: #080808;">
         <div class="container">
             <div class="topnav" id="myTopnav">
-                <a href="~/Home/Index?searchBar=" class="@LinkClass("/Home/Index")">Home</a>
-                <a href="~/Home/Popular" class="@LinkClass("/Home/Popular")">Hot</a>
-                <a href="~/Home/UnitedStates" class="@LinkClass("/Home/UnitedStates")">United States</a>
+                <a href="~/Home/Index?page=1&searchBar=" class="@LinkClass("/Home/Index")">Home</a>
+                <a href="~/Home/Popular?page=1&searchBar=" class="@LinkClass("/Home/Popular")">Hot</a>
+                <a href="~/Home/UnitedStates?page=1&searchBar=" class="@LinkClass("/Home/UnitedStates")">United States</a>
                 <a href="javascript:void(0);" class="icon" onclick="responsiveNavbar()">&#9776;</a>
                 <div class="search-container">
-                    <form action="" method="post">
+                    <form action="/Home/Index?page=1&searchBar=" method="post">
                         <input type="text" placeholder="Search.." name="searchBar" id="searchBar">
-                        <input type="hidden" placeholder="1" name="pageNumber" id="paginationBar" value="1">
+                        <input type="hidden" placeholder="1" name="page" id="page" value="1">
                     </form>
                 </div>
             </div>

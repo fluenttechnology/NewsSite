@@ -46,7 +46,8 @@ namespace NewsSite.Controllers
 
 
         //Base index function, uses search bar
-        public ActionResult Index(string searchBar)
+        [HttpPost]
+        public ActionResult Index(int? page, string searchBar, int? dummy)
         {
             var url = "https://newsapi.org/v2/everything?" +
                 "domains=bbc.co.uk&" +
